@@ -25,13 +25,14 @@ provider "azurerm" {
 # Access client_id, tenant_id, subscription_id and object_id configuration values
 data "azurerm_client_config" "current" {}
 
-resource "azurerm_key_vault" "kv" {
-  name                     = adegen
-  location                 = westeurope
+resource "azurerm_storage_account" "example" {
+  name                     = "storageaccountname"
   resource_group_name      = var.environment_name
-  tenant_id                = data.azurerm_client_config.current.tenant_id
-  purge_protection_enabled = false
-  sku_name                 = "standard"
+  location                 = "westeurope"
+  account_tier             = "Standard"
+  account_replication_type = "GRS"
 
-  tags = var.tags
+  tags = {
+    environment = "staging"
+  }
 }
