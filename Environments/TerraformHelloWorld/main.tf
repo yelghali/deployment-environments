@@ -6,13 +6,13 @@ terraform {
       version = "~>3.97.1"
       source  = "hashicorp/azurerm"
     }
-    backend "azurerm" {
+
+  }
+      backend "azurerm" {
       resource_group_name  = "tfstate"
       storage_account_name = "tfstate31138"
       container_name       = "tfstate"
       key                  = "terraform.tfstate"
-  }
-
   }
 }
 
