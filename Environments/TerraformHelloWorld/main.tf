@@ -33,7 +33,7 @@ provider "azurerm" {
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_storage_account" "example" {
-  name                     = "stoyaya6766yaya76"
+  name                     = "stoyaya6766yaya787"
   resource_group_name      = var.resource_group_name
   location                 = "westeurope"
   account_tier             = "Standard"
