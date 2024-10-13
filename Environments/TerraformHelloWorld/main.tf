@@ -32,12 +32,17 @@ provider "azurerm" {
 # Access client_id, tenant_id, subscription_id and object_id configuration values
 data "azurerm_client_config" "current" {}
 
+resource "random_string" "storage_suffix" {
+  length  = 8
+  special = false
+}
+
 resource "azurerm_storage_account" "example" {
-  name                     = "stoyaya6766yaya787"
+  name                     = "stoyaya${random_string.storage_suffix.result}"
   resource_group_name      = var.resource_group_name
   location                 = "westeurope"
   account_tier             = "Standard"
-  account_replication_type = "GRS"
+  account_replication_type = "LRS"
 
   tags = {
     environment = "staging"
