@@ -25,7 +25,13 @@ provider "azurerm" {
 # Access client_id, tenant_id, subscription_id and object_id configuration values
 data "azurerm_client_config" "current" {}
 
-resource "azurerm_resource_group" "example" {
-  name     = "ade-generated-resources"
-  location = "West Europe"
+resource "azurerm_key_vault" "kv" {
+  name                     = adegen
+  location                 = westeurope
+  resource_group_name      = var.environment_name
+  tenant_id                = data.azurerm_client_config.current.tenant_id
+  purge_protection_enabled = false
+  sku_name                 = "standard"
+
+  tags = var.tags
 }
