@@ -27,7 +27,7 @@ data "azurerm_client_config" "current" {}
 
 resource "azurerm_storage_account" "example" {
   name                     = "storageaccountname"
-  resource_group_name      = var.environment_name
+  resource_group_name      = var.resource_group_name
   location                 = "westeurope"
   account_tier             = "Standard"
   account_replication_type = "GRS"
