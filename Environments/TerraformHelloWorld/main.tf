@@ -35,8 +35,10 @@ data "azurerm_client_config" "current" {}
 resource "random_string" "storage_suffix" {
   length  = 8
   special = false
+  upper   = false
+  lower   = true
+  number  = true
 }
-
 resource "azurerm_storage_account" "example" {
   name                     = "stoyaya${random_string.storage_suffix.result}"
   resource_group_name      = var.resource_group_name
